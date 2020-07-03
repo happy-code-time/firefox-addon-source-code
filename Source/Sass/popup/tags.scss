@@ -1,0 +1,95 @@
+ @import '../globals/declarations.scss';
+
+.tags {
+  width: 100%;
+  max-height: calc(100vh - 170px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  .tags-ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 10px 5px;
+
+    li {
+      margin-left: 10px;
+    }
+
+    .tag-group {
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: $dark-green;
+      color: rgb(255, 255, 255);
+      font-size: 14px;
+    }
+
+    .single-tag {
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 0 40px;
+      height: 40px;
+      line-height: 40px;
+      margin: 10px 10px 10px 0;
+      border: 1px solid rgba(69, 69, 69, 0.3);
+      box-shadow: 0px 0px 5px transparent;
+      border-radius: 5px;
+      transition-duration: $default_transition;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      color: rgba(39, 39, 39, 1);
+      font-size: 0.97rem;
+      background-color: rgba(255, 255, 255, 1);
+      min-width: 88px;
+    }
+
+    .single-tag:hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 5px rgba(69, 69, 69, 0.2);
+    }
+
+    .count {
+      position: absolute;
+      top: 0px;
+      right: -2px;
+      width: 30px;
+      widows: 15px;
+      line-height: 15px;
+      text-align: center;
+      color: $red;
+      font-size: 9px;
+      z-index: 2;
+    }
+
+    .found-tags {
+      position: relative;
+      z-index: 1;
+    }
+    .found-tags:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background-color: transparent;
+      z-index: -1;
+      transition-duration: $default_transition;
+    }
+
+    .found-tags:hover:after {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+}
+
+.tags-custom {
+  max-height: calc(100vh - 110px);
+}

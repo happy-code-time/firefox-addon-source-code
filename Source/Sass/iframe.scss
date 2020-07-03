@@ -1,0 +1,240 @@
+@import './globals/declarations';
+
+#app{
+    background-color:rgba(39,39,39,.9);
+    box-sizing: border-box;
+    padding:50px;
+
+    .close{
+        position: fixed;
+        top: -100px;
+        right: 25px;
+        font-size: 6rem;
+        color:$dodgerblue;
+        transition-duration: $default_transition;
+        z-index:999999;
+    }
+
+    .close:hover{
+        cursor: pointer;
+        color:$red;
+    }
+    /*
+        BOXES with description on the homepage
+    */
+    .react-divcreator-box-boxes__data--left__single-box{
+        background-color: rgb(255,255,255);
+    }
+
+    .react-divcreator-box-boxes__data{
+        padding:0;
+
+        // box title
+        .react-divcreator-box-boxes__data--left__single-box--title{
+            .box-text-icon{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                width: 100%;
+                height: 30px;
+
+                i{
+                    width: 50px;
+                    font-size:1.123rem;
+                    line-height: 30px;
+                    text-align: left;
+                    color:$orange;
+                }
+
+                h1{
+                    width: calc(100% - 50px);
+                    font-size: 1.123rem;
+                    font-weight: 500;
+                    color:rgba(0, 0, 0, 0.54);
+                    box-sizing: border-box;
+                    text-align: left;
+                    line-height: 5px;
+                }
+            }
+        }
+        .box-content--div{
+            .element-p{
+                width: 100%;
+                font-size: 0.87rem;
+                font-weight: 500;
+                color:rgba(0, 0, 0, 0.84);
+                box-sizing: border-box;
+                text-align: left;
+                min-height:30px;
+                line-height: 30px;
+                text-align: justify;
+            }
+        }
+        .box-content{
+            img{
+                border-radius: 5px;
+                margin: 0 auto;
+                display: block;
+                width: 100%;
+                max-width: 600px;
+            }
+        }
+    }
+
+    .textarea-span{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top:20px;
+        
+        textarea{
+            width: calc(100% - 5px);
+            display: block;
+            margin: 0;
+            min-height: 500px;
+            border-radius:5px;
+            line-height:30px;
+            font-size: 0.87rem;
+            font-weight: 500;
+            background-color: rgb(39,39,39);
+            color:rgb(255,255,255);
+            box-sizing: border-box;
+            padding:5px;
+            border:none;
+            resize: vertical;
+        }
+    }
+
+    .export-options-single{
+        width: 100%;
+        min-height:50px;
+        line-height:50px;
+    
+        ul{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            li{
+                width: 50px;
+                position: relative;
+                list-style: none;
+
+                i{
+                    font-size: 30px;
+                    cursor: pointer;
+                    color: $dodgerblue;
+                }
+
+                .divtriangle{
+                    width:150px;
+                    top:60px;
+                    left:-4px;
+                    position: absolute;
+                    background-color: rgb(69,69,69);
+                    border-radius:5px;
+                    cursor: default;
+                    transition-duration: $default_transition;
+                    opacity:0;
+                    z-index:-1;
+                }
+                .divtriangle p{
+                    min-height:20px;
+                    line-height:20px;
+                    text-align:center;
+                    width: 100%;
+                    color:rgb(255,255,255);
+                    font-size:0.77rem;
+                    letter-spacing: 0.03rem;
+                    transition-duration: $default_transition;
+                    box-sizing: border-box;
+                    padding:10px;
+                }
+            }
+
+            li:hover{
+                .divtriangle{
+                    opacity: 1;
+                    z-index:1;
+                }
+            }
+        }
+    }
+    .keys-for-type-example{   
+        width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding:10px 20px;
+    
+        .react-divcreator-list--responsive{
+            .react-divcreator-list__data--ul-li{
+                width: 100% !important;
+            }
+        }
+        .react-divcreator-list__header{
+            background-color: rgba(24,115,204,1);
+            border-top-left-radius:5px;
+            border-top-right-radius: 5px;
+    
+            .react-divcreator-list__header--title{
+                box-sizing: border-box;
+                padding:20px 5px 10px 5px;
+                color:rgb(255,255,255);
+    
+                i,
+                .react-divcreator-list__header--title-span{
+                    color:white;
+                    font-size: 1.4rem;
+                    margin: 0 10px 0 0;
+                }
+            }
+        }
+    
+        ul{
+            list-style: none;
+            padding-left:0;
+            
+            li{
+                float: left;
+                box-sizing: border-box;
+                padding: 10px;
+                min-height: 30px;
+                line-height: 30px;
+                width: 100%;
+                min-width: 200px;
+    
+                .react-divcreator-list__header--ul-li--p{
+                    color:rgb(255,255,255);
+                    font-size:1.2rem;
+                }
+    
+                .react-divcreator-list__data--ul-li--p{
+                    color:rgba(69, 69, 69, 0.5);
+                    font-size:1rem;
+                }
+            }
+        }
+    
+        .react-divcreator-list__data--ul__odd {
+            background-color: rgba(69, 69, 69, 0.05);
+        }
+        .react-divcreator-list__data--ul__even {
+            background-color: rgba(69, 69, 69, 0.1);
+        }
+    
+        .react-divcreator-list__data--ul {
+            li{
+                overflow: auto;
+            }
+        }
+
+        .react-divcreator-list__data--ul-li--div--value{
+            width: 20%;
+        }
+
+        .react-divcreator-list__data--ul-li--div--key{
+            width: 80%;
+        }
+    }
+}

@@ -1,0 +1,132 @@
+#app{
+    width: 100%;
+    overflow-x:hidden;
+
+    .Content{
+        overflow: hidden;
+    }
+
+    .website--history{
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 20px;
+
+        .analyser{
+            width: 100%;
+
+            .box{
+                @media screen and (min-width: $media-break) {
+                    display: inline-block;
+                    width: calc(33% - 22px);
+                    float: left;
+                }
+
+                display: block;
+                width: calc(100% - 20px);
+                margin: 30px 10px;
+                border-radius: 5px;
+                border:1px solid $border-color;
+                box-sizing: border-box;
+                padding: 20px 10px;
+                overflow: hidden;
+                float: none;
+
+                .content{
+
+                    .value,
+                    .text{
+                        line-height: 0.97rem;
+                    }
+
+                    .value{
+                        box-sizing: border-box;
+                        padding: 10px;
+                        margin-right: 10px;
+                        font-size: 2.4rem;
+                        color: #72777a;
+                    }
+                    .text{
+                        width: 100%;
+                        color: $dodgerblue;
+                        font-size: 0.932rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+        .copied{
+            animation: scaleItCopyToClipboard 700ms infinite ease-in-out;
+        }
+        
+        .code-box-holder{
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            border:1px solid $border-color;
+            box-sizing: border-box;
+            overflow: hidden;
+
+            h1{
+                border-bottom: 2px solid $border-color;
+                padding: 20px;
+                background-color: #F9F9F9;
+                position: relative;
+                z-index:1;
+            }
+
+            .code-box{
+                width: calc(50% - 20px);
+                margin: 10px;
+                border-radius: 5px;
+                border:1px solid $border-color;
+                box-sizing: border-box;
+                padding: 20px 10px;
+                overflow: hidden;
+                display: inline-block;
+                position: relative;
+                min-height: 125px;
+                // background-color: rgba(253, 222, 230, .3);
+
+                .value{
+                    box-sizing: border-box;
+                    padding: 0 10px;
+                    font-size: 0.88rem;
+                    color: #72777a;
+                    line-height: 30px;
+                    letter-spacing: 0.12rem;
+                }
+    
+                .export-options{
+                    position: absolute;
+                    right:0;
+                    top:0;
+                    width: 60px;
+                    height: 100%;
+                    background-color: rgb(59,59,59);
+                    padding-top: 10px;
+                    z-index:2;
+    
+                    i{
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        border-radius: 50%;
+                        background-color: transparent;
+                        display: block;
+                        margin: 5px auto;
+                        color: $white;
+                        transition-duration: $default_transition;
+                    }
+    
+                    i:hover{
+                        background-color: rgb(122,122,122);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

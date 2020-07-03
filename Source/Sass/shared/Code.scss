@@ -1,0 +1,153 @@
+.code-box {
+  width: calc(100% - 20px);
+  margin: 30px 10px 10px 10px;
+  border-radius: 5px;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  min-height: 420px;
+  background-color: rgba(222,222,222,.6);
+
+  .search {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+
+    input {
+      width: calc(100% - 60px);
+      min-height: 30px;
+      line-height: 30px;
+      border: 1px solid #dadce0;
+      box-sizing: border-box;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 10px;
+    }
+  }
+
+  .rr-sourcecode.dark {
+    background-color: #1e1e1e;
+    width: calc(100% - 60px);
+    border-radius: 5px;
+
+    .tagStart,
+    .tagEnd,
+    .slash {
+      color: #586470;
+    }
+    .tagName {
+      color: #255cb2;
+    }
+    .equal {
+      color: #c2c2c2;
+    }
+
+    .quote-double,
+    .quote-single,
+    .attributeValue {
+      color: #a75029;
+    }
+
+    .not-filtered,
+    .no-match,
+    .value {
+      color: rgb(255, 2552, 255);
+    }
+
+    .line-number {
+      width: 50px;
+      color: rgba(169,169,169,.84);
+    }
+    .variable-dollar {
+      color: #f4459f;
+    }
+
+    .bracket {
+      color: violet;
+    }
+    .functionArguments {
+      color: orange;
+    }
+    .variableName,
+    .attributeName,
+    .functionName {
+      color: mediumseagreen;
+    }
+    .bracketValue {
+      color: pink;
+    }
+    .key {
+      color: $dodgerblue-light;
+    }
+
+    .search {      
+      input {
+        width: calc(100% - 10px);
+      }
+    }
+  }
+
+  .code {
+    width: calc(100% - 60px);
+    line-height: 20px;
+    letter-spacing: 0.11rem;
+    white-space: pre-wrap;
+
+    .lines {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .single-code-line {
+      line-height: 35px;
+      letter-spacing: 0.12rem;
+      font-weight: 0.87rem;
+
+      .line-number {
+        margin-left:10px;
+        width: 50px;
+        color: rgba(169,169,169,.84);
+      }
+
+      .line-number {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+      }
+    }
+  }
+
+  .export-options {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background-color: rgb(59, 59, 59);
+    padding-top: 10px;
+    z-index: 1;
+
+    i {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: transparent;
+      display: block;
+      margin: 5px auto;
+      color: $white;
+      transition-duration: $default_transition;
+    }
+
+    i:hover {
+      background-color: rgb(122, 122, 122);
+      cursor: pointer;
+    }
+  }
+}

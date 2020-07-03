@@ -1,0 +1,153 @@
+@import '../globals/declarations';
+
+/*
+    COPY TO CLIPBOARD
+*/
+$animation-copy-to-clipboard: 200ms;
+
+@keyframes animate-copy-to-clipboard {
+    from {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+    }
+  
+    to {
+        transform: scaleY(0.7);
+        -webkit-transform: scaleY(0.7);
+        transform-origin: 0% 0;
+        -webkit-transform-origin: 0% 0;
+    }
+}
+@keyframes animate-copy-to-clipboard-back {
+    0% {
+        transform: scaleY(0.7);
+        -webkit-transform: scaleY(0.7);
+        transform-origin: 0% 0;
+        -webkit-transform-origin: 0% 0;
+    }
+    30%{
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+    }
+    65%{
+        transform: scaleY(0.8);
+        -webkit-transform: scaleY(0.8);
+    }
+    100% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+    }
+}
+
+.copy-to-clipboard-holder{
+    width: 100%;
+    clear:both;
+    display: block;
+
+    .copy-to-clipboard{
+        transition: $animation-copy-to-clipboard;
+        transition-duration: $animation-copy-to-clipboard;
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+        transform-origin: 0% 0;
+        -webkit-transform-origin: 0% 0;
+        cursor: pointer;
+        display: block;
+        box-sizing: border-box;
+        min-height: 35px;
+        line-height: 20px;
+        padding: 10px;
+        border-radius: 3px;
+        max-width: 220px;
+        text-align: center;
+        float: right;
+        margin-right: 10px 0;
+        background-color:$dodgerblue-dark-light;
+        color: rgb(255,255,255);
+        position: relative;
+        overflow: hidden;
+    
+        i{
+            margin-left:20px;
+            color:rgb(255,255,255);
+        }
+    }
+
+    .copy-to-clipboard:after{
+        content: '';
+        position: absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+        height: 0;
+        background-color:$dodgerblue-dark;
+        transition-duration: 300ms;
+        z-index:-1;
+    }
+
+    .copy-to-clipboard:hover:after{
+        height:100%;
+    }
+
+    .copy-to-clipboard.copied,
+    .fa-clipboard:active{
+        animation: animate-copy-to-clipboard $animation-copy-to-clipboard ease-out forwards;
+    }
+    
+    .copy-to-clipboard.copied-remove{
+        animation: animate-copy-to-clipboard-back $animation-copy-to-clipboard ease-out forwards;
+    }
+}
+
+.copy-to-clipboard{
+    transition: $animation-copy-to-clipboard;
+    transition-duration: $animation-copy-to-clipboard;
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform-origin: 0% 0;
+    -webkit-transform-origin: 0% 0;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    min-height: 35px;
+    line-height: 25px;
+    padding: 5px;
+    max-width: 220px;
+    text-align: center;
+    background-color:$dodgerblue-dark-light;
+    color: rgb(255,255,255);
+    border-radius: 3px;
+    margin:10px 0;
+    position: relative;
+    overflow: hidden;
+
+    i{
+        margin-left:20px;
+        color:rgb(255,255,255);
+    }
+}
+
+.copy-to-clipboard:after{
+    content: '';
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 0;
+    background-color: $dodgerblue-dark;
+    transition-duration: 300ms;
+    z-index:-1;
+}
+
+.copy-to-clipboard:hover:after{
+    height:100%;
+}
+
+.copy-to-clipboard.copied,
+.fa-clipboard:active{
+    animation: animate-copy-to-clipboard $animation-copy-to-clipboard ease-out forwards;
+}
+
+.copy-to-clipboard.copied-remove{
+    animation: animate-copy-to-clipboard-back $animation-copy-to-clipboard ease-out forwards;
+}

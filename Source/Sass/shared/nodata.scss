@@ -1,0 +1,38 @@
+.NoData{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  line-height: 50px;
+  min-height: 300px;
+
+  img{
+    max-height: 165px;
+    display: block;
+    margin: 75px auto 30px auto;
+  }
+}
+
+
+.NoDataCookies,
+.NoDataIframes{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  line-height: 50px;
+
+  .h1-title{
+    max-width: 90%;
+    margin: 50px 5%;
+    text-align: center;
+  }
+
+  img{
+    max-width: 80vw;
+    max-height: calc(70vh - 50px);
+    display: block;
+    margin: 50px auto;
+    border-radius:5px;
+  }
+}

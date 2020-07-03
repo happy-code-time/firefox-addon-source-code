@@ -1,0 +1,140 @@
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  z-index: 99;
+  background-color: rgb(39, 39, 39);
+  transform: rotateZ(180deg);
+
+  i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+    font-size: 1.88rem;
+    color: $white;
+    transform: rotateZ(90deg);
+  }
+}
+
+.back-to-top.fire {
+  @keyframes opacityIt {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes flyToTop {
+    0% {
+      bottom: 20px;
+    }
+    100% {
+      bottom: calc(100vh + 50px);
+    }
+  }
+
+  animation: flyToTop 700ms forwards ease-in;
+
+  .holder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: opacityIt 200ms forwards ease-in;
+  }
+
+  .container {
+    position: absolute;
+    top: -5px;
+    left: 17px;
+    width: 20px;
+    height: 20px;
+    transform-origin: center bottom;
+    animation-name: flicker;
+    animation-duration: 3ms;
+    animation-delay: 100ms;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform: rotateZ(-180deg);
+  }
+
+  .flame {
+    bottom: 0;
+    position: absolute;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    transform: rotate(-45deg) scale(1.5, 1.5);
+  }
+
+  .yellow {
+    left: 11px;
+    width: 11px;
+    height: 11px;
+    background: gold;
+    box-shadow: 0px 0px 9px 4px gold;
+  }
+
+  .orange {
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    background: orange;
+    box-shadow: 0px 0px 9px 4px orange;
+  }
+
+  .red {
+    left: 9px;
+    width: 15px;
+    height: 15px;
+    background: OrangeRed;
+    box-shadow: 0px 0px 5px 4px OrangeRed;
+  }
+
+  .white {
+    left: 13px;
+    bottom: 0px;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 9px 4px white;
+  }
+
+  .circle {
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  @keyframes flicker {
+    0% {
+      transform: rotate(-1deg);
+    }
+    20% {
+      transform: rotate(1deg);
+    }
+    40% {
+      transform: rotate(-1deg);
+    }
+    60% {
+      transform: rotate(1deg) scaleY(1.04);
+    }
+    80% {
+      transform: rotate(-2deg) scaleY(0.92);
+    }
+    100% {
+      transform: rotate(1deg);
+    }
+  }
+}
+
+.back-to-top:hover {
+  cursor: pointer;
+}

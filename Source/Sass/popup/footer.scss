@@ -1,0 +1,39 @@
+@import '../globals/declarations.scss';
+
+.footer{
+    height:35px;
+    margin-top:5px;
+    background-color: transparent;
+
+    ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 10px 5px;
+
+
+        li{
+            padding: 4px;
+            width: 14%;
+            height: 25px;
+            line-height: 17.5px;
+            margin: 2.5px 10px;
+            border-radius: 5px;
+            font-size: 0.87rem;
+            transition-duration: $default_transition;
+            position: relative;
+            z-index:1;
+            transform: scale(1);
+            text-align: center;
+            color: $white;
+            background-color: $dark-green;
+        }
+
+        li:hover{
+            cursor: pointer;
+        }
+    }
+}

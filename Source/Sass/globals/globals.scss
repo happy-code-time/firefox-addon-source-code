@@ -1,0 +1,192 @@
+@import './colors';
+
+.w-100{
+  width: 100%;
+}
+
+.block{
+  display: block;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+
+.flex-start{
+  justify-content: flex-start;
+}
+
+.flex-space-around{
+  justify-content: space-around;
+}
+
+.flex-space-between{
+  justify-content: space-between;
+}
+
+.relative{
+  position: relative;
+}
+
+.font-input{
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+.ff-title{
+  font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+.h1-title{
+  color:#202124;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.ff-roboto {
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+.buttons-group{
+  box-sizing: border-box;
+  padding:10px;
+  max-width: 90%;
+  margin: 20px 5%;
+}
+
+.buttons-group-delete-account{
+  box-sizing: border-box;
+  padding:10px;
+  max-width: 90%;
+  margin: 0 5%;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.lime {
+  color: $lime;
+}
+
+.dodgerblue{
+  color: $dodgerblue;
+}
+
+.little-gray {
+  color: rgba(69, 69, 69, 0.7);
+}
+
+.action-icon {
+  color: #313435;
+  opacity: 0.8;
+}
+
+.action-icon:hover {
+  cursor: pointer;
+}
+
+.py-2{
+  padding:20px 0;
+}
+
+.my-2{
+  margin:20px 0;
+}
+
+.my-0{
+  margin: 0px 0 !important;
+}
+
+.no-padding{
+  padding: 0px !important;
+}
+
+.mr-2{
+  margin-right: 20px;
+}
+
+h1,
+.h1,
+.p{
+  color: rgba(0, 0, 0, 0.77);
+}
+
+.h1-list{
+  color: #202124;
+  font-size: 21px;
+  font-weight: 400;
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  min-height: 40px;
+  line-height: 40px;
+  white-space: nowrap;
+  word-wrap: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 10px !important;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.icon-chat{
+  color: $green-light !important;
+}
+
+.icon-security{
+  color: rgba(228, 132, 252, .33) !important;
+}
+
+.icon-images{
+  color: $dodgerblue-light !important;
+}
+
+.icon-messages{
+  color: rgb(122,122,122) !important;
+}
+
+.color-red,
+.icon-notifications{
+  color: $red-light !important;
+}
+
+.color-green,
+.icon-iframes{
+
+}
+
+.icon-cookies{
+
+}
+
+.font-small{
+  font-size: 0.923rem !important;
+}
+
+.single-entry,
+.popup-box-icon{
+  color: rgb(79, 79, 79) !important;
+}
