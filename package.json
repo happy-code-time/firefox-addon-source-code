@@ -1,6 +1,6 @@
 {
   "name": "source-code",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Show the source code and all external requests of the current visited website. Export source code to: clipboard, xls, xlsx, csv or JSON file. Store informations about the grabbed source code locally in the cache (of your browser) and view the history from the Dashboard page.",
   "main": "index.ts",
   "scripts": {

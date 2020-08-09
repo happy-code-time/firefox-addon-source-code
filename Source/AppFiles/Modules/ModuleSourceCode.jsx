@@ -145,383 +145,391 @@ class ModuleSourceCode extends Component {
 
                     if ('' !== codeViaLine[x]) {
 
-                        const singleItems = codeViaLine[x].split(' ');
-                        let attribute = null;
-                        let previusType = '';
-
-                        for (let mrx = 0; mrx < singleItems.length; mrx++) {
-                            let characters = '';
-
-                            if ('' !== singleItems[mrx]) {
-                                const wordsCharacterSet = singleItems[mrx].split('');
-                                characters = '';
-
-                                for (let i = 0; i < wordsCharacterSet.length; i++) {
-                                    let nextCharacter = (undefined !== wordsCharacterSet[i + 1]) ? wordsCharacterSet[i + 1] : undefined;
-
-                                    if ('\t' == wordsCharacterSet[i]) {
-                                        singleLineData.push(
-                                            {
-                                                code: '\t',
-                                                class: 'tab'
-                                            }
-                                        );
-                                    }
-                                    else {
-                                        characters += wordsCharacterSet[i];
-                                        /**
-                                         * Tags matcher
-                                         */
-                                        const tagMatcher = this.tagsMatcher(characters, singleLineData, nextCharacter);
-                                        characters = tagMatcher.characters;
-                                        singleLineData = tagMatcher.singleLineData;
-
-                                        /**
-                                         * Tags attributes
-                                         */
-                                        if (characters.length) {
-                                            const attributesMatcher = this.attributesMatcher(characters, singleLineData, nextCharacter, attribute);
-                                            characters = attributesMatcher.characters;
-                                            singleLineData = attributesMatcher.singleLineData;
-                                            attribute = attributesMatcher.attribute;
-                                        }
-                                    }
-                                }
+                        singleLineData.push(
+                            {
+                                code: codeViaLine[x],
+                                class: 'no-match'
                             }
+                        );
 
-                            /**
-                             * No match
-                             */
-                            if (characters.length) {
+                        // const singleItems = codeViaLine[x].split(' ');
 
-                                /**
-                                 * PHP dollar character
-                                 */
-                                if (-1 !== characters.indexOf('$')) {
+                        // let attribute = null;
+                        // let previusType = '';
 
-                                    singleLineData.push(
-                                        {
-                                            code: characters.substring(0, characters.indexOf('$')),
-                                            class: 'no-match php'
-                                        }
-                                    );
+                        // for (let mrx = 0; mrx < singleItems.length; mrx++) {
+                        //     let characters = '';
 
-                                    let variable = characters.substring(characters.indexOf('$'), characters.length);
-                                    variable = variable.split('');
+                        //     if ('' !== singleItems[mrx]) {
+                        //         const wordsCharacterSet = singleItems[mrx].split('');
+                        //         characters = '';
 
-                                    let items = '$';
-                                    let itemsMatch = 0;
+                        //         for (let i = 0; i < wordsCharacterSet.length; i++) {
+                        //             let nextCharacter = (undefined !== wordsCharacterSet[i + 1]) ? wordsCharacterSet[i + 1] : undefined;
 
-                                    for (let x = 1; x <= variable.length - 1; x++) {
-                                        if (/^[a-zA-Z]+$/.test(variable[x])) {
-                                            items += variable[x];
-                                        }
-                                        else {
-                                            itemsMatch = x;
-                                            break;
-                                        }
-                                    }
+                        //             if ('\t' == wordsCharacterSet[i]) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: '\t',
+                        //                         class: 'tab'
+                        //                     }
+                        //                 );
+                        //             }
+                        //             else {
+                        //                 characters += wordsCharacterSet[i];
+                        //                 /**
+                        //                  * Tags matcher
+                        //                  */
+                        //                 const tagMatcher = this.tagsMatcher(characters, singleLineData, nextCharacter);
+                        //                 characters = tagMatcher.characters;
+                        //                 singleLineData = tagMatcher.singleLineData;
 
-                                    if (items.length) {
-                                        singleLineData.push(
-                                            {
-                                                code: items,
-                                                class: 'variable-dollar'
-                                            }
-                                        );
-                                    }
+                        //                 /**
+                        //                  * Tags attributes
+                        //                  */
+                        //                 if (characters.length) {
+                        //                     const attributesMatcher = this.attributesMatcher(characters, singleLineData, nextCharacter, attribute);
+                        //                     characters = attributesMatcher.characters;
+                        //                     singleLineData = attributesMatcher.singleLineData;
+                        //                     attribute = attributesMatcher.attribute;
+                        //                 }
+                        //             }
+                        //         }
+                        //     }
 
-                                    if (itemsMatch) {
-                                        characters = characters.substring(itemsMatch, variable.length);
-                                    }
+                        //     /**
+                        //      * No match
+                        //      */
+                        //     if (characters.length) {
 
-                                    else {
-                                        characters = '';
-                                    }
+                        //         /**
+                        //          * PHP dollar character
+                        //          */
+                        //         if (-1 !== characters.indexOf('$')) {
 
-                                    previusType = 'php';
-                                }
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: characters.substring(0, characters.indexOf('$')),
+                        //                     class: 'no-match php'
+                        //                 }
+                        //             );
 
-                                /**
-                                 * Functions matcher
-                                 */
-                                if (-1 !== characters.indexOf('(') && -1 !== characters.indexOf(')')) {
-                                    const fnName = characters.substring(0, characters.indexOf('('));
+                        //             let variable = characters.substring(characters.indexOf('$'), characters.length);
+                        //             variable = variable.split('');
 
-                                    singleLineData.push(
-                                        {
-                                            code: fnName,
-                                            class: 'functionName'
-                                        }
-                                    );
+                        //             let items = '$';
+                        //             let itemsMatch = 0;
 
-                                    const attr = characters.substring(fnName.length + 1, characters.indexOf(')'));
+                        //             for (let x = 1; x <= variable.length - 1; x++) {
+                        //                 if (/^[a-zA-Z]+$/.test(variable[x])) {
+                        //                     items += variable[x];
+                        //                 }
+                        //                 else {
+                        //                     itemsMatch = x;
+                        //                     break;
+                        //                 }
+                        //             }
 
-                                    singleLineData.push(
-                                        {
-                                            code: '(',
-                                            class: 'bracket bracket-left'
-                                        }
-                                    );
-                                    singleLineData.push(
-                                        {
-                                            code: attr,
-                                            class: 'functionArguments'
-                                        }
-                                    );
+                        //             if (items.length) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: items,
+                        //                         class: 'variable-dollar'
+                        //                     }
+                        //                 );
+                        //             }
 
-                                    singleLineData.push(
-                                        {
-                                            code: ')',
-                                            class: 'bracket bracket-right'
-                                        }
-                                    );
+                        //             if (itemsMatch) {
+                        //                 characters = characters.substring(itemsMatch, variable.length);
+                        //             }
 
-                                    characters = characters.substring(fnName.length + 1 + attr.length + 1, characters.length);
-                                }
+                        //             else {
+                        //                 characters = '';
+                        //             }
 
-                                if (-1 !== characters.indexOf('(')) {
-                                    const fnName = characters.substring(0, characters.indexOf('('));
-                                    previusType = 'function';
+                        //             previusType = 'php';
+                        //         }
 
-                                    singleLineData.push(
-                                        {
-                                            code: fnName,
-                                            class: 'functionName'
-                                        }
-                                    );
+                        //         /**
+                        //          * Functions matcher
+                        //          */
+                        //         if (-1 !== characters.indexOf('(') && -1 !== characters.indexOf(')')) {
+                        //             const fnName = characters.substring(0, characters.indexOf('('));
 
-                                    const attr = characters.substring(fnName.length + 1, characters.length);
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: fnName,
+                        //                     class: 'functionName'
+                        //                 }
+                        //             );
 
-                                    singleLineData.push(
-                                        {
-                                            code: '(',
-                                            class: 'bracket bracket-left'
-                                        }
-                                    );
-                                    singleLineData.push(
-                                        {
-                                            code: attr,
-                                            class: 'functionArguments'
-                                        }
-                                    );
+                        //             const attr = characters.substring(fnName.length + 1, characters.indexOf(')'));
 
-                                    characters = '';
-                                }
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: '(',
+                        //                     class: 'bracket bracket-left'
+                        //                 }
+                        //             );
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: attr,
+                        //                     class: 'functionArguments'
+                        //                 }
+                        //             );
 
-                                /**
-                                 * Match everything as function arguments to match ")"
-                                 */
-                                if ('function' == previusType) {
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: ')',
+                        //                     class: 'bracket bracket-right'
+                        //                 }
+                        //             );
 
-                                    if (-1 !== characters.indexOf('))')) {
-                                        singleLineData.push(
-                                            {
-                                                code: characters.substring(0, characters.indexOf(')') + 1),
-                                                class: 'functionArguments'
-                                            }
-                                        );
+                        //             characters = characters.substring(fnName.length + 1 + attr.length + 1, characters.length);
+                        //         }
 
-                                        singleLineData.push(
-                                            {
-                                                code: ')',
-                                                class: 'bracket bracket-right'
-                                            }
-                                        );
+                        //         if (-1 !== characters.indexOf('(')) {
+                        //             const fnName = characters.substring(0, characters.indexOf('('));
+                        //             previusType = 'function';
 
-                                        characters = characters.substring(characters.indexOf(')') + 2, characters.length);
-                                        previusType = '';
-                                    }
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: fnName,
+                        //                     class: 'functionName'
+                        //                 }
+                        //             );
 
-                                    if (-1 !== characters.indexOf(')')) {
-                                        singleLineData.push(
-                                            {
-                                                code: characters.substring(0, characters.indexOf(')')),
-                                                class: 'functionArguments'
-                                            }
-                                        );
+                        //             const attr = characters.substring(fnName.length + 1, characters.length);
 
-                                        singleLineData.push(
-                                            {
-                                                code: ')',
-                                                class: 'bracket bracket-right'
-                                            }
-                                        );
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: '(',
+                        //                     class: 'bracket bracket-left'
+                        //                 }
+                        //             );
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: attr,
+                        //                     class: 'functionArguments'
+                        //                 }
+                        //             );
 
-                                        characters = characters.substring(characters.indexOf(')') + 1, characters.length);
-                                        previusType = '';
-                                    }
-                                    else {
-                                        singleLineData.push(
-                                            {
-                                                code: characters,
-                                                class: 'functionArguments'
-                                            }
-                                        );
+                        //             characters = '';
+                        //         }
 
-                                        characters = '';
-                                        previusType = 'function';
-                                    }
-                                }
+                        //         /**
+                        //          * Match everything as function arguments to match ")"
+                        //          */
+                        //         if ('function' == previusType) {
 
-                                /**
-                                 * Css or objects
-                                 */
-                                if (-1 !== characters.indexOf('{')) {
-                                    const pref = characters.substring(0, characters.indexOf('{'));
-                                    characters = characters.substring(pref.length, characters.length);
+                        //             if (-1 !== characters.indexOf('))')) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: characters.substring(0, characters.indexOf(')') + 1),
+                        //                         class: 'functionArguments'
+                        //                     }
+                        //                 );
 
-                                    if (-1 !== pref.indexOf('=')) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: ')',
+                        //                         class: 'bracket bracket-right'
+                        //                     }
+                        //                 );
 
-                                        singleLineData.push(
-                                            {
-                                                code: pref.substring(0, pref.indexOf('=')),
-                                                class: 'variableName'
-                                            }
-                                        );
+                        //                 characters = characters.substring(characters.indexOf(')') + 2, characters.length);
+                        //                 previusType = '';
+                        //             }
 
-                                        singleLineData.push(
-                                            {
-                                                code: '=',
-                                                class: 'equal'
-                                            }
-                                        );
-                                    }
+                        //             if (-1 !== characters.indexOf(')')) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: characters.substring(0, characters.indexOf(')')),
+                        //                         class: 'functionArguments'
+                        //                     }
+                        //                 );
 
-                                    if (-1 !== characters.indexOf('{')) {
-                                        singleLineData.push(
-                                            {
-                                                code: characters.substring(0, characters.indexOf('{')),
-                                                class: 'no-match'
-                                            }
-                                        );
-                                        singleLineData.push(
-                                            {
-                                                code: '{',
-                                                class: 'bracket bracket-left'
-                                            }
-                                        );
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: ')',
+                        //                         class: 'bracket bracket-right'
+                        //                     }
+                        //                 );
 
-                                        characters = characters.substring(characters.indexOf('{') + 1, characters.length);
-                                        previusType = 'bracketOpen';
-                                    }
+                        //                 characters = characters.substring(characters.indexOf(')') + 1, characters.length);
+                        //                 previusType = '';
+                        //             }
+                        //             else {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: characters,
+                        //                         class: 'functionArguments'
+                        //                     }
+                        //                 );
 
-                                    if (-1 !== characters.indexOf('}') && 'bracketOpen' == previusType) {
-                                        singleLineData.push(
-                                            {
-                                                code: characters.substring(0, characters.indexOf('}')),
-                                                class: 'bracketValue'
-                                            }
-                                        );
-                                        singleLineData.push(
-                                            {
-                                                code: '}',
-                                                class: 'bracket bracket-right'
-                                            }
-                                        );
+                        //                 characters = '';
+                        //                 previusType = 'function';
+                        //             }
+                        //         }
 
-                                        characters = characters.substring(characters.indexOf('}') + 1, characters.length);
-                                        previusType = '';
-                                    }
-                                }
+                        //         /**
+                        //          * Css or objects
+                        //          */
+                        //         if (-1 !== characters.indexOf('{')) {
+                        //             const pref = characters.substring(0, characters.indexOf('{'));
+                        //             characters = characters.substring(pref.length, characters.length);
 
-                                if (-1 !== characters.indexOf('}')) {
-                                    singleLineData.push(
-                                        {
-                                            code: characters.substring(0, characters.indexOf('}')),
-                                            class: 'no-match'
-                                        }
-                                    );
-                                    singleLineData.push(
-                                        {
-                                            code: '}',
-                                            class: 'bracket bracket-right'
-                                        }
-                                    );
+                        //             if (-1 !== pref.indexOf('=')) {
 
-                                    characters = characters.substring(characters.indexOf('}') + 1, characters.length);
-                                    previusType = '';
-                                }
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: pref.substring(0, pref.indexOf('=')),
+                        //                         class: 'variableName'
+                        //                     }
+                        //                 );
 
-                                if (-1 !== characters.indexOf('=')) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: '=',
+                        //                         class: 'equal'
+                        //                     }
+                        //                 );
+                        //             }
 
-                                    singleLineData.push(
-                                        {
-                                            code: characters.substring(0, characters.indexOf('=')),
-                                            class: 'variableName'
-                                        }
-                                    );
+                        //             if (-1 !== characters.indexOf('{')) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: characters.substring(0, characters.indexOf('{')),
+                        //                         class: 'no-match'
+                        //                     }
+                        //                 );
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: '{',
+                        //                         class: 'bracket bracket-left'
+                        //                     }
+                        //                 );
 
-                                    singleLineData.push(
-                                        {
-                                            code: '=',
-                                            class: 'equal'
-                                        }
-                                    );
+                        //                 characters = characters.substring(characters.indexOf('{') + 1, characters.length);
+                        //                 previusType = 'bracketOpen';
+                        //             }
 
-                                    characters = characters.substring(characters.indexOf('=') + 1, characters.length);
-                                }
+                        //             if (-1 !== characters.indexOf('}') && 'bracketOpen' == previusType) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: characters.substring(0, characters.indexOf('}')),
+                        //                         class: 'bracketValue'
+                        //                     }
+                        //                 );
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: '}',
+                        //                         class: 'bracket bracket-right'
+                        //                     }
+                        //                 );
 
-                                if (')' == characters) {
-                                    singleLineData.push(
-                                        {
-                                            code: ')',
-                                            class: 'bracket bracket-right'
-                                        }
-                                    );
-                                    characters = '';
-                                    previusType = '';
-                                }
+                        //                 characters = characters.substring(characters.indexOf('}') + 1, characters.length);
+                        //                 previusType = '';
+                        //             }
+                        //         }
 
-                                if (characters.length) {
+                        //         if (-1 !== characters.indexOf('}')) {
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: characters.substring(0, characters.indexOf('}')),
+                        //                     class: 'no-match'
+                        //                 }
+                        //             );
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: '}',
+                        //                     class: 'bracket bracket-right'
+                        //                 }
+                        //             );
 
-                                    const lastMatch = [
-                                        {
-                                            words: ['import', 'from', 'require', 'use', 'return', 'return;', 'var', 'let', 'const', 'export default', 'default', 'extends', 'interface'],
-                                            class: 'key'
-                                        }
-                                    ];
+                        //             characters = characters.substring(characters.indexOf('}') + 1, characters.length);
+                        //             previusType = '';
+                        //         }
 
-                                    for (let x = 0; x <= lastMatch.length - 1; x++) {
-                                        const wordsToCheck = lastMatch[x].words;
+                        //         if (-1 !== characters.indexOf('=')) {
 
-                                        for (let i = 0; i <= wordsToCheck.length - 1; i++) {
-                                            if (wordsToCheck[i] === characters) {
-                                                singleLineData.push(
-                                                    {
-                                                        code: characters,
-                                                        class: lastMatch[x].class
-                                                    }
-                                                );
-                                                characters = '';
-                                                break;
-                                            }
-                                        }
-                                    }
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: characters.substring(0, characters.indexOf('=')),
+                        //                     class: 'variableName'
+                        //                 }
+                        //             );
 
-                                    if (characters.length) {
-                                        singleLineData.push(
-                                            {
-                                                code: characters,
-                                                class: 'no-match'
-                                            }
-                                        );
-                                    }
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: '=',
+                        //                     class: 'equal'
+                        //                 }
+                        //             );
 
-                                    previusType = '';
-                                }
-                            }
+                        //             characters = characters.substring(characters.indexOf('=') + 1, characters.length);
+                        //         }
 
-                            /**
-                             * Push the same char as splitted with
-                             */
-                            singleLineData.push(
-                                {
-                                    code: ' ',
-                                    class: 'space'
-                                }
-                            );
-                        }
+                        //         if (')' == characters) {
+                        //             singleLineData.push(
+                        //                 {
+                        //                     code: ')',
+                        //                     class: 'bracket bracket-right'
+                        //                 }
+                        //             );
+                        //             characters = '';
+                        //             previusType = '';
+                        //         }
+
+                        //         if (characters.length) {
+
+                        //             const lastMatch = [
+                        //                 {
+                        //                     words: ['import', 'from', 'require', 'use', 'return', 'return;', 'var', 'let', 'const', 'export default', 'default', 'extends', 'interface'],
+                        //                     class: 'key'
+                        //                 }
+                        //             ];
+
+                        //             for (let x = 0; x <= lastMatch.length - 1; x++) {
+                        //                 const wordsToCheck = lastMatch[x].words;
+
+                        //                 for (let i = 0; i <= wordsToCheck.length - 1; i++) {
+                        //                     if (wordsToCheck[i] === characters) {
+                        //                         singleLineData.push(
+                        //                             {
+                        //                                 code: characters,
+                        //                                 class: lastMatch[x].class
+                        //                             }
+                        //                         );
+                        //                         characters = '';
+                        //                         break;
+                        //                     }
+                        //                 }
+                        //             }
+
+                        //             if (characters.length) {
+                        //                 singleLineData.push(
+                        //                     {
+                        //                         code: characters,
+                        //                         class: 'no-match'
+                        //                     }
+                        //                 );
+                        //             }
+
+                        //             previusType = '';
+                        //         }
+                        //     }
+
+                        //     /**
+                        //      * Push the same char as splitted with
+                        //      */
+                        //     singleLineData.push(
+                        //         {
+                        //             code: ' ',
+                        //             class: 'space'
+                        //         }
+                        //     );
+                        // }
                     }
                     /**
                      * Push the same char as splitted with
