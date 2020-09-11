@@ -1,6 +1,6 @@
 {
   "name": "source-code",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Show the source code and all external requests of the current visited website. Export source code to: clipboard, xls, xlsx, csv or JSON file. Store informations about the grabbed source code locally in the cache (of your browser) and view the history from the Dashboard page.",
   "main": "index.ts",
   "scripts": {
@@ -58,7 +58,7 @@
     "react-csv": "^1.1.2",
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1",
+    "redux": "^4.0.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "typescript": "^3.4.3",

@@ -5,7 +5,7 @@ const ENTRY_DASHBOARD = {
     out: path.resolve(__dirname, './Distribution/Iframes/')
 };
 
-const version = 'v4.0.1';
+const version = 'v4.0.2';
 
 const config = {
     mode: 'production',
